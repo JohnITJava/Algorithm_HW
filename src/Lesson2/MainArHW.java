@@ -9,7 +9,7 @@ public class MainArHW {
         System.out.println(Arrays.toString(arr));*/
         Random random = new Random();
 
-        Array arr = new Array(54, 32, 21, 6, 5, 10, 18, 0, 34, 11, 7);
+        Array arr = new Array(0, 1, 2, 54, 32, 21, 6, 5, 10, 18, 0, 34, 55, 56);
         /*for (int i = 0; i < 10; i++) {
             arr.append(i);
         }*/

@@ -123,11 +123,18 @@ public class Array {
     public void sortBubbleUpd(){
         int N = 0;
         for (int i = 0; i < size; i++) {
+            int f = 0;
             for (int j = 0; j < size - 1 - i; j++) {
-                if (arr[j] > arr[j + 1])
+                if (arr[j] > arr[j + 1]){
                     swap(j, j + 1);
+                    f = 1;
+                }
                 N++;
             }
+            if (f == 0) {
+                isSorted = true;
+                System.out.println("Operations is: " + N);
+                return;}
         }
         isSorted = true;
         System.out.println("Operations is: " + N);

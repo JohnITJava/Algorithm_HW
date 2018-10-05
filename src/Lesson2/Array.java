@@ -120,6 +120,19 @@ public class Array {
         System.out.println("Operations is: " + N);
     }
 
+    public void sortBubbleUpd(){
+        int N = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size - 1 - i; j++) {
+                if (arr[j] > arr[j + 1])
+                    swap(j, j + 1);
+                N++;
+            }
+        }
+        isSorted = true;
+        System.out.println("Operations is: " + N);
+    }
+
     public void sortSelect(){
         for (int flag = 0; flag < size; flag++) {
             int curMin = flag;

@@ -64,6 +64,10 @@ public class Array {
     }
 
     boolean delete(int index){ //by index
+        if (index == size - 1) {size--;} else {
+        System.arraycopy(arr, index + 1, arr, index, size - 1 - index);
+        size--;
+        }
         return true;
     }
 

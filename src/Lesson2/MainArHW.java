@@ -15,8 +15,11 @@ public class MainArHW {
             System.out.printf("%3d", arr.get(i));
         }
 
-        arr.deleteAll();
-        System.out.println();
+        /*arr.deleteAll();
+        System.out.println();*/
+
+        arr.delete(9);
+        System.out.println(" After:");
         System.out.println(arr.toString());
     }
 }

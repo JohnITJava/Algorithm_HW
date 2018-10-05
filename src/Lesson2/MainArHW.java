@@ -18,7 +18,11 @@ public class MainArHW {
         /*arr.deleteAll();
         System.out.println();*/
 
-        arr.delete(9);
+        arr.append(5);
+        arr.append(6);
+        System.out.println(" Before:");
+        System.out.println(arr.toString());
+        arr.deleteAll(5);
         System.out.println(" After:");
         System.out.println(arr.toString());
     }

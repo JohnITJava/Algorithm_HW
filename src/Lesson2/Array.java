@@ -71,7 +71,14 @@ public class Array {
         return true;
     }
 
-    boolean deleteAll(int value){ //by value
+    boolean deleteAll(int value){
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == value) {
+                System.arraycopy(arr, i + 1, arr, i, size - 1 - i);
+                size--;
+            }
+        }
+
         return true;
     }
 

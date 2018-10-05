@@ -1,4 +1,4 @@
-package Algorithm_HW.src.Lesson2;
+package Lesson2;
 
 public class Array {
     private int[] arr;
@@ -71,9 +71,9 @@ public class Array {
         return true;
     }
 
-    void deleteAll(){ //clearAll
-
-    }
+    void deleteAll(){ //clearAll /*Thank's for Dmitry:)
+        size = 0;
+    } // возможно еще один из способов, как-то установить null или записать в массив null - но это уже совем другая история
 
     /*
     * Search

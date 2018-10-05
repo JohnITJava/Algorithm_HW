@@ -1,4 +1,4 @@
-package Algorithm_HW.src.Lesson2;
+package Lesson2;
 
 public class MainArHW {
     public static void main(String[] args) {
@@ -15,5 +15,8 @@ public class MainArHW {
             System.out.printf("%3d", arr.get(i));
         }
 
+        arr.deleteAll();
+        System.out.println();
+        System.out.println(arr.toString());
     }
 }

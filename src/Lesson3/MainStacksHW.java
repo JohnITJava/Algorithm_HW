@@ -2,9 +2,19 @@ package Lesson3;
 
 public class MainStacksHW {
     public static void main(String[] args) {
-        String someStr = "abcdefg";
+        //String someStr = "abcdefg";
 
-        reverse(someStr);
+        //reverse(someStr);
+
+        PriorityQueue pq = new PriorityQueue(5);
+        pq.insert(5);
+        pq.insert(6);
+        pq.insert(8);
+        pq.insert(3);
+        pq.insert(4);
+        pq.insert(1);
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
     }
 
     public static void reverse(String str){

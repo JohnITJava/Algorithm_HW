@@ -6,8 +6,17 @@ public class MainListHW {
         bdl.insertHead(new Cat(3, "Sam"));
         bdl.insertTail(new Cat(4,"Pet"));
         bdl.insertHead(new Cat(2, "Mad"));
-        bdl.removeTail();
-        bdl.removeHead();
+        NodeIterator ni = new NodeIterator(bdl);
         System.out.println(bdl.toString());
+
+        bdl.insert(new Cat(5, "Kitty"), 1);
+        System.out.println(bdl.toString());
+
+        /*ni.nextLink();
+        System.out.println(ni.getCurrent().toString());*/
+
+        //bdl.removeTail();
+        //bdl.removeHead();
+
     }
 }

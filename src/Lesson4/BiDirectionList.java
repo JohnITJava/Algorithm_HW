@@ -1,7 +1,7 @@
 package Lesson4;
 
 public class BiDirectionList {
-    private class Node {
+    public class Node {
         Cat c;
         Node next;
         Node prev;
@@ -26,6 +26,22 @@ public class BiDirectionList {
 
     private Node head;
     private Node tail;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
 
     public BiDirectionList() {
         head = null;
@@ -91,8 +107,18 @@ public class BiDirectionList {
     }
 
     //вставка в i-ю позицию с помощью итератора
-    public void insert(int i){}
+    public void insert(Cat c, int i){
+        Node n = new Node(c);
+        NodeIterator ni = new NodeIterator(this);
+        Node tmp = head;
+        head = ni.getCurrent();
+        head.next = n;
+        n.prev = head;
+        n.next = ni.getNext();
+        n.next.prev = n;
+        head = tmp;
+    }
 
     //удаление i-й позиции с помощью итератора
-    public boolean delete(int i){return true;}
+    public boolean delete(Cat c, int i){return true;}
 }

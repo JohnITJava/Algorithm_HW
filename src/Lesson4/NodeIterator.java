@@ -75,10 +75,13 @@ public class NodeIterator {
 
     }
 
-    public void insertAfter(int i){
+    public void insertAfter(int i, Node node){
         for (int j = 0; j < i; j++) {
             nextLink();
         }
+
+        node.prev = current.prev;
+        node.next = current;
     }
 
     public void insertBefore(){}

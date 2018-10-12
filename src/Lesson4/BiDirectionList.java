@@ -110,13 +110,10 @@ public class BiDirectionList {
     public void insert(Cat c, int i){
         Node n = new Node(c);
         NodeIterator ni = new NodeIterator(this);
-        Node tmp = head;
-        head = ni.getCurrent();
-        head.next = n;
-        n.prev = head;
-        n.next = ni.getNext();
-        n.next.prev = n;
-        head = tmp;
+        ni.insertAfter(i, n);
+        Node curit = ni.getCurrent();
+        curit.prev.next = n;
+        curit.prev = n;
     }
 
     //удаление i-й позиции с помощью итератора

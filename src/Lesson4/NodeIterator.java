@@ -71,8 +71,12 @@ public class NodeIterator {
         return current;
     }
 
-    public void atEnd(){
+    public boolean atEnd(){
+        return current.next == null;
+    }
 
+    public boolean atFirst(){
+        return current.prev == null;
     }
 
     public void insertAfter(int i, Node node){

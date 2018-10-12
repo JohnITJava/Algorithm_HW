@@ -26,61 +26,59 @@ public class BiDirectionList {
 
     private Node head;
     private Node tail;
+    private int count;
 
     public Node getHead() {
         return head;
     }
 
-    public void setHead(Node head) {
-        this.head = head;
-    }
-
-    public Node getTail() {
-        return tail;
-    }
-
-    public void setTail(Node tail) {
-        this.tail = tail;
-    }
 
     public BiDirectionList() {
         head = null;
         tail = null;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return head == null;
     }
 
-    public void insertHead(Cat c){
+    public void insertHead(Cat c) {
         Node n = new Node(c);
         if (this.isEmpty()) tail = n;
-        else {n.next = head;
-        head.prev = n;}
+        else {
+            n.next = head;
+            head.prev = n;
+        }
         head = n;
+        count++;
     }
 
-    public void insertTail(Cat c){
+    public void insertTail(Cat c) {
         Node n = new Node(c);
         if (isEmpty()) head = n;
-        else {tail.next = n;
-        n.prev = tail;}
+        else {
+            tail.next = n;
+            n.prev = tail;
+        }
         tail = n;
+        count++;
     }
 
-    public Cat removeHead(){
+    public Cat removeHead() {
         if (isEmpty()) return null;
         Cat c = head.c;
         head = head.next;
         head.prev = null;
+        count--;
         return c;
     }
 
-    public Cat removeTail(){
+    public Cat removeTail() {
         if (isEmpty()) return null;
         Cat c = tail.c;
         tail = tail.prev;
         tail.next = null;
+        count--;
         return c;
     }
 
@@ -96,10 +94,10 @@ public class BiDirectionList {
         return sb.toString();
     }
 
-    public boolean contains(Cat c){
+    public boolean contains(Cat c) {
         if (isEmpty()) return false;
         Node current = head;
-        while (current.c.equals(c)){
+        while (current.c.equals(c)) {
             if (current.next == null) return false;
             else current = current.next;
         }
@@ -107,15 +105,26 @@ public class BiDirectionList {
     }
 
     //вставка в i-ю позицию с помощью итератора
-    public void insert(Cat c, int i){
-        Node n = new Node(c);
-        NodeIterator ni = new NodeIterator(this);
-        ni.insertAfter(i, n);
-        Node curit = ni.getCurrent();
-        curit.prev.next = n;
-        curit.prev = n;
+    public boolean insert(Cat c, int i) {
+        if (i == 0) {
+            insertHead(c);
+            return true;
+        } else if (i == count) {
+            insertTail(c);
+            return true;
+        } else {
+            Node n = new Node(c);
+            NodeIterator ni = new NodeIterator(this);
+            ni.insertAfter(i, n);
+            Node curit = ni.getCurrent();
+            curit.prev.next = n;
+            curit.prev = n;
+        }
+        return true;
     }
 
     //удаление i-й позиции с помощью итератора
-    public boolean delete(Cat c, int i){return true;}
+    public boolean delete(Cat c, int i) {
+        return true;
+    }
 }

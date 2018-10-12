@@ -105,13 +105,11 @@ public class BiDirectionList {
     }
 
     //вставка в i-ю позицию с помощью итератора
-    public boolean insert(Cat c, int i) {
+    public void insert(Cat c, int i) {
         if (i == 0) {
             insertHead(c);
-            return true;
         } else if (i == count) {
             insertTail(c);
-            return true;
         } else {
             Node n = new Node(c);
             NodeIterator ni = new NodeIterator(this);
@@ -119,12 +117,24 @@ public class BiDirectionList {
             Node curit = ni.getCurrent();
             curit.prev.next = n;
             curit.prev = n;
+            count++;
         }
-        return true;
     }
 
     //удаление i-й позиции с помощью итератора
-    public boolean delete(Cat c, int i) {
+    public boolean delete(int i) {
+        if (i == 0) {
+            removeHead();
+        } else if (i == count) {
+            removeTail();
+        } else {
+            NodeIterator ni = new NodeIterator(this);
+            ni.deleteCurrent(i);
+            Node curit = ni.getCurrent();
+            curit.prev.next = curit.next;
+            curit.next.prev = curit.prev;
+            count--;
+        }
         return true;
     }
 }

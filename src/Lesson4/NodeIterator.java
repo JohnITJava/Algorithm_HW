@@ -3,53 +3,12 @@ package Lesson4;
 import Lesson4.BiDirectionList.Node;
 
 public class NodeIterator {
-    /*private class Node {
-        Cat c;
-        Node next;
-        Node prev;
-
-        public Node(Cat c) {
-            this.c = c;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Node node = (Node) o;
-            return c != null ? c.equals(node.c) : node.c == null;
-        }
-
-        @Override
-        public String toString() {
-            return c.toString();
-        }
-    }*/
 
     private Node current;
     private Node prev;
     private Node next;
     private BiDirectionList list;
 
-    public void setCurrent(Node current) {
-        this.current = current;
-    }
-
-    public Node getPrev() {
-        return prev;
-    }
-
-    public void setPrev(Node prev) {
-        this.prev = prev;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
 
     public NodeIterator(BiDirectionList list){
         this.list = list;
@@ -83,14 +42,19 @@ public class NodeIterator {
         for (int j = 0; j < i; j++) {
             nextLink();
         }
-
         node.prev = current.prev;
         node.next = current;
     }
 
     public void insertBefore(){}
 
-    public void deleteCurrent(int i){}
+    public void deleteCurrent(int i){
+        for (int j = 0; j < i - 1; j++) {
+            nextLink();
+        }
+        /*current.prev.next = current.next;
+        current.next.prev = current.prev;*/
+    }
 
 }
 

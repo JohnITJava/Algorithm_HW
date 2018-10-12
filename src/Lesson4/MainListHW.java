@@ -9,7 +9,10 @@ public class MainListHW {
         NodeIterator ni = new NodeIterator(bdl);
         System.out.println(bdl.toString());
 
-        bdl.insert(new Cat(5, "Kitty"), 1);
+        bdl.insert(new Cat(5, "Kitty"), 3);
+        System.out.println(bdl.toString());
+
+        bdl.delete(2);
         System.out.println(bdl.toString());
 
         /*ni.nextLink();

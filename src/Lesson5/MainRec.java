@@ -4,6 +4,9 @@ public class MainRec {
 
     public static void main(String[] args) {
         System.out.println(expo(3, 4));
+
+        AnagramApp an = new AnagramApp("moscow");
+        an.getAnagramm(an.getSize());
     }
 
     //Возведение в степень с использованием четной степени - было реализовано на первой домашке:)

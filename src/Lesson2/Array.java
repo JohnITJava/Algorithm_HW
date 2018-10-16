@@ -165,6 +165,14 @@ public class Array {
         isSorted = true;
     }
 
+    public void sortCount(){
+        int temp[] = new int[size];
+        for (int i = 0; i < size - 1; i++) {
+
+        }
+        isSorted = true;
+    }
+
     public boolean hasValue(int value) {
         if (!isSorted) throw new RuntimeException("Try the 'find' method");
         int l = 0;

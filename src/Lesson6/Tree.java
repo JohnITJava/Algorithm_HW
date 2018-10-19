@@ -4,6 +4,7 @@ public class Tree {
 
     private class TreeNode{
         private int n;
+
         public TreeNode left;
         public TreeNode right;
 
@@ -21,19 +22,26 @@ public class Tree {
 
     TreeNode root;
 
+    int leftC;
+    int rightC;
+
     //insert
     public void insert(int n) {
         TreeNode node = new TreeNode(n);
-        if (root == null) root = node;
+        if (root == null) {
+            root = node;
+        }
         else {
             TreeNode current = root;
             TreeNode parent;
             while (true) {
                 parent = current;
-                if (n < current.n) current = current.left;
+                if (n < current.n){
+                    current = current.left;
                 if (current == null) {
                     parent.left = node;
                     return;
+                }
                 } else if (n > current.n) {
                     current = current.right;
                     if (current == null) {
@@ -65,6 +73,15 @@ public class Tree {
             inOrderTravers(node.left);
             System.out.println(node.toString());
             inOrderTravers(node.right);
+        }
+    }
+
+    public void isBalanced(TreeNode node, int n){
+        leftC += n;
+        rightC += n;
+        if (node != null){
+            isBalanced(node.left, 1);
+            isBalanced(node.right, 1);
         }
     }
 
@@ -137,4 +154,5 @@ public class Tree {
         }
         return s;
     }
+
 }

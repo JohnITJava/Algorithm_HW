@@ -1,8 +1,21 @@
 package Lesson4;
 
 public class Cat {
-    private int age;
-    private String name;
+    protected int age;
+    protected String name;
+
+    public Cat getNext() {
+        return next;
+    }
+
+    public void setNext(Cat next) {
+        this.next = next;
+    }
+
+    private Cat next;
+
+    public Cat() {
+    }
 
     public Cat(int age, String name) {
         this.age = age;

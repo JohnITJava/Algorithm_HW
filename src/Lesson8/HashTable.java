@@ -7,7 +7,7 @@ public class HashTable {
     private int arrSize;
     private Cat nullItem;
 
-    public HashTable(int arrSize){
+    public HashTable(int arrSize) {
         this.arrSize = arrSize;
         this.hashArr = new Cat[arrSize];
         this.nullItem = new Cat(-1, "");
@@ -25,76 +25,85 @@ public class HashTable {
         return sb.toString();
     }
 
-    private int hashFunc(int key){
+    private int hashFunc(int key) {
         return key % arrSize;
     }
 
-    private int linearProbe(int hashVal){
+    private int linearProbe(int hashVal) {
         ++hashVal;
         hashVal %= arrSize;
         return hashVal;
     }
 
-    private int quadProbe(int hashVal, int count){
+    private int quadProbe(int hashVal, int count) {
         hashVal = count * count;
         hashVal %= arrSize;
         return hashVal;
     }
 
-    private int doubleHash(int key){
+    private int doubleHash(int key) {
         return 19 - (key % 19);
     }
 
-    private int dHashProbe(int hashVal, int key){
+    private int dHashProbe(int hashVal, int key) {
         hashVal += doubleHash(key);
         hashVal %= arrSize;
         return hashVal;
     }
 
-    public Cat find(int key){
+    public Cat find(int key) {
         int step = 1;
         int hashVal = hashFunc(key);
-        while (hashArr[hashVal] != null){
-            if (hashArr[hashVal].getAge() == key)
-                return hashArr[hashVal];
-            //step++;
-            //hashVal = linearProbe(hashVal);
-            //hashVal = quadProbe(hashVal, step);
-            hashVal = dHashProbe(hashVal, key);
+        Cat tempCur = hashArr[hashVal];
+        while (tempCur != null) {
+            if (tempCur.getAge() == key)
+                return tempCur;
+            tempCur = tempCur.getNext();
         }
         return null;
     }
 
-    public void insert(Cat c){
+    public void insert(Cat c) {
         int step = 1;
         int key = c.getAge();
         int hashVal = hashFunc(key);
-        while (hashArr[hashVal] != null && hashArr[hashVal] != nullItem){
-            hashVal = dHashProbe(hashVal, key);
-//            step++;
-//            hashVal = quadProbe(hashVal, step);
-            //hashVal = linearProbe(hashVal);
+        if (hashArr[hashVal] != null && hashArr[hashVal] != nullItem) {
+            Cat tempCur = hashArr[hashVal];
+            while (tempCur.getNext() != null) {
+                tempCur = tempCur.getNext();
+            }
+            tempCur.setNext(c);
+            return;
         }
         hashArr[hashVal] = c;
     }
 
-    public Cat delete(int key){
+    public boolean delete(int key) {
         int step = 1;
         int hashVal = hashFunc(key);
-        while (hashArr[hashVal] != null) {
-            if (hashArr[hashVal].getAge() == key) {
-                Cat temp = hashArr[hashVal];
-                hashArr[hashVal] = nullItem;
-                return temp;
+        Cat tempCur = hashArr[hashVal];
+        Cat prev = null;
+        if (hashArr[hashVal].getNext() == null) {
+            hashArr[hashVal] = nullItem;
+            return true;
+        } else {
+            while (tempCur.getNext() != null) {
+                if (tempCur.getAge() == key && prev == null) {
+                    hashArr[hashVal] = tempCur.getNext();
+                    return true;
+                }
+                if (tempCur.getNext().getAge() == key) {
+                    tempCur.setNext(tempCur.getNext().getNext());
+                    return true;
+                }
+                /*if (tempCur.getNext() == null && tempCur.getAge() == key){
+
+                }*/
+                prev = hashArr[hashVal];
+                tempCur = tempCur.getNext();
             }
-            //step++;
-            hashVal = dHashProbe(hashVal, key);
-           // hashVal = quadProbe(hashVal, step);
-            //hashVal = linearProbe(hashVal);
         }
-            return null;
+        return false;
     }
-
-
 
 }
